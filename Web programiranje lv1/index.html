@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+	<html lang="hr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="keywords" content="web, programiranje, html, css"> <!--dodan meta tag sa ključnim riječima -->
+		<link rel="stylesheet" href="style.css">
+
+		
+		<title>Moja web stranica za LV1</title>
+	</head>
+	<body>
+		<header>
+		<h1>Dobrodosli na moju web stranicu</h1>
+		</header>
+		
+		<nav> 
+			<input type="checkbox" id="nav-toggle">
+			<label for="nav-toggle" class="hamburger">
+				<span></span> <!-- tri linije koje čine hamburger ikonu -->
+				<span></span> <!-- tri linije koje čine hamburger ikonu -->
+				<span></span> <!-- tri linije koje čine hamburger ikonu -->
+			</label>
+			<ul class="nav-menu"> 	
+				<li><a href="index.html">Početna</a></li>
+				<li><a href="grafikon.html">Grafikoni</a></li>
+				<li><a href="slike.html">Slike</a></li>
+			</ul>
+		</nav>
+
+		<!--ODabrana tablica filmova sa samo nekim redovima -->
+		<h1>Netflix Titles</h1>
+		<div class="table-aside-wrap">
+			<table class="netflix-titles">
+				<thead>
+				<tr>
+					<th>Type</th>
+					<th>Title</th>
+					<th>Director</th>
+					<th>Release Year</th>
+					<th>Rating</th>
+					<th>Duration</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr><td>Movie</td><td>Dick Johnson Is Dead</td><td>Kirsten Johnson</td><td>2020</td><td>PG-13</td><td>90 min</td></tr>
+				<tr><td>TV Show</td><td>Blood & Water</td><td></td><td>2021</td><td>TV-MA</td><td>2 Seasons</td></tr>
+				<tr><td>TV Show</td><td>Ganglands</td><td>Julien Leclercq</td><td>2021</td><td>TV-MA</td><td>1 Season</td></tr>
+				<tr><td>TV Show</td><td>Jailbirds New Orleans</td><td></td><td>2021</td><td>TV-MA</td><td>1 Season</td></tr>
+				<tr><td>TV Show</td><td>Kota Factory</td><td></td><td>2021</td><td>TV-MA</td><td>2 Seasons</td></tr>
+				<tr><td>TV Show</td><td>Midnight Mass</td><td>Mike Flanagan</td><td>2021</td><td>TV-MA</td><td>1 Season</td></tr>
+				<tr><td>Movie</td><td>My Little Pony: A New Generation</td><td>Robert Cullen, José Luis Ucha</td><td>2021</td><td>PG</td><td>91 min</td></tr>
+				<tr><td>Movie</td><td>Sankofa</td><td>Haile Gerima</td><td>1993</td><td>TV-MA</td><td>125 min</td></tr>
+				<tr><td>TV Show</td><td>The Great British Baking Show</td><td>Andy Devonshire</td><td>2021</td><td>TV-14</td><td>9 Seasons</td></tr>
+				<tr><td>Movie</td><td>The Starling</td><td>Theodore Melfi</td><td>2021</td><td>PG-13</td><td>104 min</td></tr>
+				<tr><td>TV Show</td><td>Vendetta: Truth, Lies and The Mafia</td><td></td><td>2021</td><td>TV-MA</td><td>1 Season</td></tr>
+				<tr><td>TV Show</td><td>Bangkok Breaking</td><td>Kongkiat Komesiri</td><td>2021</td><td>TV-MA</td><td>1 Season</td></tr>
+				<tr><td>Movie</td><td>Je Suis Karl</td><td>Christian Schwochow</td><td>2021</td><td>TV-MA</td><td>127 min</td></tr>
+				<tr><td>Movie</td><td>Confessions of an Invisible Girl</td><td>Bruno Garotti</td><td>2021</td><td>TV-PG</td><td>91 min</td></tr>
+				<tr><td>TV Show</td><td>Crime Stories: India Detectives</td><td></td><td>2021</td><td>TV-MA</td><td>1 Season</td></tr>
+				<tr><td>TV Show</td><td>Dear White People</td><td></td><td>2021</td><td>TV-MA</td><td>4 Seasons</td></tr>
+				<tr><td>Movie</td><td>Europe's Most Dangerous Man: Otto Skorzeny in Spain</td><td>Pedro de Echave García, Pablo Azorín Williams</td><td>2020</td><td>TV-MA</td><td>67 min</td></tr>
+				<tr><td>TV Show</td><td>Falsa identidad</td><td></td><td>2020</td><td>TV-MA</td><td>2 Seasons</td></tr>
+				<tr><td>Movie</td><td>Intrusion</td><td>Adam Salky</td><td>2021</td><td>TV-14</td><td>94 min</td></tr>
+			</tbody>
+		</table>
+
+		<aside>
+			<picture>
+				<source media="(min-width: 650px)" srcset="images/biw.jpg" alt="Blood & Water"> <!-- ako je sirina veca od 650px -->
+				<source media="(min-width: 465px)" srcset="images/djid.jpg" alt="Dick Johnson Is Dead"> <!-- ako je sirina veca od 465px -->
+				<img src="images/inf.jpg" alt="Intrusion"> <!-- ako je sirina manja od 465px -->
+			</picture>
+		</aside>
+	</div>
+
+		
+		<article>
+			<h2>Najnovije vijesti</h2>
+			<details>
+				<summary>Saznaj najnovije vijesti</summary>
+				<div>
+					<h3>Netflix objavio novu seriju!</h3>
+					<p>U najnovijoj seriji "Blood & Water" pratimo priču o dvije sestre koje se ponovno 
+						susreću nakon godina razdvojenosti. Serija je puna napetosti, misterija i
+						 obiteljskih tajni. Pogledajte trailer i saznajte više o glumcima!</p>
+				</div>
+			</details>
+		</article>
+		
+
+		
+		<footer>
+		<p>&copy; 2025. Web Programiranje. Sva prava pridrzana.</p>
+		</footer>
+	</body>
+	</html>

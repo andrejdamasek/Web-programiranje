@@ -1,0 +1,125 @@
+/* CSS varijable za boje i dimenzije */
+:root {
+  /* Boje za release_year */
+  --year2021-color: #ff0000;
+  --year2020-color: #0000ff;
+  --year2018-color: #1da31d;
+  --year2013-color: #b6b606;
+  --yearother-color: #c826c8;
+
+  /* Dimenzije */
+  --pie-size: 200px;
+  --hist-width: 500px;
+  --hist-height: 350px;
+  --bar-min-height: 40px;
+  --legend-margin: 20px;
+  --chart-margin: 20px 0;
+}
+
+/* Charts */
+.chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: var(--chart-margin);
+}
+
+.pie-chart {
+    width: var(--pie-size);
+    height: var(--pie-size);
+    border-radius: 50%;
+    background: conic-gradient(
+        var(--year2013-color) 0% 4%,    /* 2013 */
+        var(--year2018-color) 4% 8%,   /* 2018 */
+        var(--year2020-color) 8% 20%,   /* 2020 */
+        var(--year2021-color) 20% 76%,   /* 2021 */
+        var(--yearother-color) 76% 100%   /* Ostalo */
+    );
+    display: block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pie-chart:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+}
+
+.legend {
+    margin-left: var(--legend-margin);
+    font-size: 14px;
+}
+
+.legend ul {
+    list-style: none;
+    padding: 0;
+}
+
+.legend li {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.legend span {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.legend span.year2013 { background: var(--year2013-color); }
+.legend span.year2018 { background: var(--year2018-color); }
+.legend span.year2020 { background: var(--year2020-color); }
+.legend span.year2021 { background: var(--year2021-color); }
+.legend span.yearother { background: var(--yearother-color); }
+
+.histogram {
+    display: flex;
+    align-items: end;
+    gap: 10px;
+    height: var(--hist-height);
+    width: var(--hist-width);
+}
+
+.bar {
+    flex: 1;
+    background: #3498db;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    padding: 5px 0;
+    border-radius: 5px 5px 0 0;
+    min-height: var(--bar-min-height);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.bar:hover {
+    transform: translateY(-10px);
+    opacity: 0.9;
+}
+
+.bar.year2021 { background: var(--year2021-color); }
+.bar.year2020 { background: var(--year2020-color); }
+.bar.year2018 { background: var(--year2018-color); }
+.bar.year2013 { background: var(--year2013-color); }
+.bar.yearother { background: var(--yearother-color); }
+
+/* Media queries ako je ekran siri od 768px prikazi histogram */
+@media (min-width: 768px) {
+    .pie-chart, .legend {
+        display: none;
+    }
+    .histogram {
+        display: flex;
+    }
+}
+/* Media queries ako je ekran uzi od 768px prikazi pie chart */
+@media (max-width: 767px) {
+    .histogram {
+        display: none;
+    }
+    .pie-chart, .legend {
+        display: block;
+    }
+}
