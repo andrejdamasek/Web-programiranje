@@ -1,0 +1,59 @@
+<html lang="hr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="grafikoni, html, charts"> <!-- dodan meta tag sa ključnim riječima -->
+        <link rel="stylesheet" href="/style/style.css">
+        <link rel="stylesheet" href="/style/grafikon.css">
+        
+
+    </head>
+    <body>
+
+        <header>
+            <h1>Grafikoni</h1>
+        </header>
+
+        <nav> 
+			<input type="checkbox" id="nav-toggle">
+			<label for="nav-toggle" class="hamburger">
+				<span></span> <!-- tri linije koje čine hamburger ikonu -->
+				<span></span> <!-- tri linije koje čine hamburger ikonu -->
+				<span></span> <!-- tri linije koje čine hamburger ikonu -->
+			</label>
+			<ul class="nav-menu"> 	
+				<li><a href="/index.html">Početna</a></li>
+				<li><a href="/grafikon.html">Grafikoni</a></li>
+				<li><a href="/slike">Slike</a></li>
+			</ul>
+		</nav>
+
+		<section>
+			<h2>Raspodjela release_year u Netflix titles (prvih 50 redaka)</h2>
+			<div class="chart-container">
+				<!-- Pie Chart -->
+				<div class="pie-chart"></div>
+				<!-- Legenda za pie chart -->
+				<div class="legend">
+					<h3>Legenda</h3>
+					<ul>
+						<li><span class="year2013"></span> 2013 (4%)</li>
+						<li><span class="year2018"></span> 2018 (4%)</li>
+						<li><span class="year2020"></span> 2020 (12%)</li>
+						<li><span class="year2021"></span> 2021 (56%)</li>
+						<li><span class="yearother"></span> Ostalo (24%)</li>
+					</ul>
+				</div>
+				<!-- Histogram -->
+				<div class="histogram">
+                    <div class="bar year2013" style="height: 4%;">2013 (2)</div>
+                    <div class="bar year2018" style="height: 4%;">2018 (2)</div>
+                    <div class="bar year2020" style="height: 12%;">2020 (6)</div>
+					<div class="bar year2021" style="height: 56%;">2021 (28)</div>			
+					<div class="bar yearother" style="height: 24%;">Ostalo (12)</div>
+				</div>
+			</div>
+		</section>
+
+	</body>
+	</html>

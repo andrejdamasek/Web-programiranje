@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerija bolida F1    </title>
+
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/style/style_slike.css">
+</head>
+<body>
+
+<header>
+    <h1>Moja web stranica </h1>
+</header>
+
+<nav>
+    <ul class="nav-menu">
+        <li><a href="/index.html">Početna</a></li>
+        <li><a href="/grafikon.html">Grafikoni</a></li>
+        <li><a href="/slike">Galerija</a></li>
+    </ul>
+</nav>
+
+<main class="content">
+    <section class="galerija">
+        <h2>Galerija slika F1</h2>
+
+        <div class="img-gallery-magnific">            
+
+            <% images.forEach(slika => { %>
+                <figure class="magnific-img galerija_slika">
+                    <img src="<%= slika.url %>" alt="<%= slika.title %>" width="500" height="600">
+                    <figcaption><%= slika.title %></figcaption>
+                </figure>
+            <% }) %>
+
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2026 Web programiranje</p>
+</footer>
+
+</body>
+</html>

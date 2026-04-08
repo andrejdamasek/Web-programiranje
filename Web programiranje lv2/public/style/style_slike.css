@@ -1,0 +1,242 @@
+/* =====================================================
+   CineBase – style_slike.css
+   Stilovi za galeriju slika (slike.html)
+   Grid layout, animacije, hover efekti, CSS-only lightbox
+   ===================================================== */
+
+/* ─── GALERIJA SEKCIJA ─── */
+.galerija {
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.galerija h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  color: var(--color-gold);
+  text-align: center;
+  margin-bottom: var(--space-xl);
+  padding-top: var(--space-xl);
+  text-shadow: 0 0 40px rgba(201,168,76,0.3);
+}
+
+/* ─── CSS GRID GALERIJA ─── */
+/* auto-fill: broj stupaca se prilagođava širini ekrana */
+.galerija {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+/* H1 zauzima cijeli red */
+.galerija h1 {
+  grid-column: 1 / -1;
+}
+
+/* ─── JEDAN ITEM (figure) ─── */
+.galerija_slika {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  animation: fadeInUp 0.6s ease both;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+}
+
+/* Stagger animacija – svaka slika se pojavljuje s malim zakašnjenjem */
+.galerija_slika:nth-child(2)  { animation-delay: 0.05s; }
+.galerija_slika:nth-child(3)  { animation-delay: 0.10s; }
+.galerija_slika:nth-child(4)  { animation-delay: 0.15s; }
+.galerija_slika:nth-child(5)  { animation-delay: 0.20s; }
+.galerija_slika:nth-child(6)  { animation-delay: 0.25s; }
+.galerija_slika:nth-child(7)  { animation-delay: 0.30s; }
+.galerija_slika:nth-child(8)  { animation-delay: 0.35s; }
+.galerija_slika:nth-child(9)  { animation-delay: 0.40s; }
+.galerija_slika:nth-child(10) { animation-delay: 0.45s; }
+.galerija_slika:nth-child(11) { animation-delay: 0.50s; }
+.galerija_slika:nth-child(12) { animation-delay: 0.55s; }
+.galerija_slika:nth-child(13) { animation-delay: 0.60s; }
+.galerija_slika:nth-child(14) { animation-delay: 0.65s; }
+.galerija_slika:nth-child(15) { animation-delay: 0.70s; }
+.galerija_slika:nth-child(16) { animation-delay: 0.75s; }
+.galerija_slika:nth-child(17) { animation-delay: 0.80s; }
+
+/* Hover: lagani lift i zlatna sjena */
+.galerija_slika:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.5), 0 0 0 1px var(--color-gold-dim);
+}
+
+/* ─── LINK UNUTAR FIGURE ─── */
+.image-popup-vertical-fit {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+}
+
+/* ─── THUMBNAIL SLIKA ─── */
+.galerija_slika img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.9) contrast(1.05);
+  transition: transform 0.5s ease, filter 0.4s ease;
+}
+
+/* Hover na sliku: zoom i desaturacija */
+.image-popup-vertical-fit:hover img {
+  transform: scale(1.08);
+  filter: brightness(0.6) contrast(1.1) saturate(0.7);
+}
+
+/* Overlay s ikonom i povećalom koji se pojavljuje na hover */
+.image-popup-vertical-fit::after {
+  content: "🔍";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.7) 0%,
+    rgba(201,168,76,0.1) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.image-popup-vertical-fit:hover::after {
+  opacity: 1;
+}
+
+/* ─── FIGCAPTION ─── */
+.galerija_slika figcaption {
+  padding: 6px 10px;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  font-style: italic;
+  transition: color var(--transition);
+}
+.galerija_slika:hover figcaption {
+  color: var(--color-gold);
+}
+
+/* ─── CSS-ONLY LIGHTBOX ─────────────────────────────────
+   Tehnika: .lightbox je display:none po defaultu.
+   Klik na sliku mijenja URL fragment (npr. #lightbox-3).
+   :target pseudo-klasa aktivira taj element → display:flex.
+   Klik na X ili pozadinu vraća na #galerija → :target = null.
+   ──────────────────────────────────────────────────────── */
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+/* :target aktivira lightbox */
+.lightbox:target {
+  display: flex;
+  animation: lightboxFadeIn 0.3s ease both;
+}
+
+/* Klikabilna poluprozirna pozadina – klik zatvara lightbox */
+.lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  cursor: pointer;
+}
+
+/* Wrapper oko slike i X gumba */
+.lightbox-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 90vw;
+  max-height: 90vh;
+  animation: lightboxScale 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) 0.05s both;
+}
+
+/* Uvećana slika */
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 82vh;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7),
+              0 0 0 2px var(--color-gold-dim);
+  display: block;
+}
+
+/* X gumb za zatvaranje */
+.lightbox-close {
+  position: absolute;
+  top: -2.6rem;
+  right: 0;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--color-gold);
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--color-gold-dim);
+  border-radius: 50%;
+  text-decoration: none;
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+.lightbox-close:hover {
+  background: var(--color-gold);
+  color: var(--color-bg);
+  transform: rotate(90deg);
+}
+
+/* ─── ANIMACIJE ─── */
+@keyframes lightboxFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes lightboxScale {
+  from { transform: scale(0.85); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+/* ─── RESPONZIVNOST ─── */
+@media (max-width: 600px) {
+  .galerija {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .lightbox-img {
+    max-height: 65vh;
+  }
+
+  .lightbox-close {
+    top: -2.2rem;
+    font-size: 1.2rem;
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+}
